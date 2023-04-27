@@ -241,7 +241,7 @@ export default {
                         
                         <!-- author -->
                         <h3>featured author</h3>
-                        <a href="">
+                        <a href="#">
                             <div class="featured-author fl">
                                     <div class="author-img">
                                         <img :src="getImgUrl(author.img)" alt="">

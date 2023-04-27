@@ -237,7 +237,7 @@ export default{
                     z-index: 2;
                     transition: 500ms;
                     .text{
-                        height: 100px;
+                        height: 120px;
                         flex-direction: column;
                         
                         h2{

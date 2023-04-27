@@ -61,8 +61,34 @@ a{
     transition: 200ms;
 }
 
+.tag{
+    color: #ffffff;
+    font-weight: bold;
+    display: inline-block;
+    padding: .5rem .8rem;
+    border-radius: 5px;
+    background-color: $primary;
+    margin-bottom: 10px;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+//typography
+h3{
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-bottom: 1rem;
+}
+
 //----------------------------------------------------------------------------------
 //header
 .nav-active{
     color: $primary;
 }
+
+.col{
+    display: inline-block;
+    width: calc(100% / 3 );
+    padding: .5rem .5rem;
+}
+

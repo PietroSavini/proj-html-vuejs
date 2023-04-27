@@ -40,6 +40,61 @@ export default{
                     title:"Amazingly Fresh Fruit And Herb Drinks For Summer",
                     content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat mollitia officia alias rem laborum culpa voluptates, deserunt iusto eveniet modi.",
                 },
+            ],
+            
+            popular:[
+                {
+                    title:"Simple Ways to Have a Preatty Face",
+                    date:"January 12, 2019",
+                    img:"blog-55.jpg",
+                },
+                {
+                    title:"Ranking the greatest players in basketball",
+                    date:"January 12, 2019",
+                    img:"blog-56.jpg",
+                },
+                {
+                    title:"4 Ways to Look Cool in Glasses",
+                    date:"January 12, 2019",
+                    img:"blog-57.jpg",
+                },
+                {
+                    title:"Top Camper Trailer Towing Tips",
+                    date:"January 12, 2019",
+                    img:"blog-58.jpg",
+                },
+                {
+                    title:"5 Lovely Walks in New York",
+                    date:"January 12, 2019",
+                    img:"blog-59.jpg",
+                },
+            ],
+            recent:[
+                {
+                    title:"Main Reasons To Stop Texting And Driving",
+                    date:"January 12, 2019",
+                    img:"blog-65.jpg",
+                },
+                {
+                    title:"Tips To Help You Quickly Prepare your Lunch",
+                    date:"January 12, 2019",
+                    img:"blog-66.jpg",
+                },
+                {
+                    title:"Why Should I buy a smartwatch?",
+                    date:"January 12, 2019",
+                    img:"blog-67.jpg",
+                },
+                {
+                    title:"The best augumented reality smartglasses",
+                    date:"January 12, 2019",
+                    img:"blog-68.jpg",
+                },
+                {
+                    title:"12 Healthiest Foods to Eat for Breakfast",
+                    date:"January 12, 2019",
+                    img:"blog-69.jpg",
+                },
             ]
         }
     },
@@ -54,7 +109,7 @@ export default{
         <!-- about us -->
         <section class="about">
             <div class="wrapper fl a-center">
-                <span>Everithing about Lifestyle, travel and Gadgets!</span>
+                <span>Everything about Lifestyle, travel and Gadgets!</span>
                 <ul class="fl a-center">
                     <li><a href="">sign in</a></li>
                     <li><a href="">about us</a></li>
@@ -122,21 +177,39 @@ export default{
         <section class="related">
             <div class="wrapper">
                 <div class="row fl ">
+                    <!-- popular posts -->
                     <div class="col">
                         <h3>popular posts</h3>
-                        <div class="post fl">
-                            <div class="img">
-                                <img src="../assets/images/blog-55.jpg" alt="">
+                        <a v-for="post in popular" href="#">
+                            <div  class="post fl">
+                                <div class="img">
+                                    <img :src="getImgUrl(post.img)" alt="">
+                                </div>
+                                <div class="post-txt">
+                                    <p class="title">{{ post.title }}</p>
+                                    <p class="date"> {{ post.date }}</p>
+                                </div>
                             </div>
-                            <div class="post-txt">
-                                <p class="title">Ciao CCiao Fontina Prosciutto</p>
-                                <p class="date"> January 12,2019</p>
-                            </div>
-                        </div>
+                        </a>
                     </div>
+                    <!-- /popular posts -->
+
+                    <!-- recent posts -->
                     <div class="col">
                         <h3>recent posts</h3>
+                        <a href="" v-for="post in recent">
+                            <div  class="post fl">
+                                <div class="img">
+                                    <img :src="getImgUrl(post.img)" alt="">
+                                </div>
+                                <div class="post-txt">
+                                    <p class="title">{{ post.title }}</p>
+                                    <p class="date"> {{ post.date }}</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
+                     <!-- recent posts -->
                     <div class="col">
                         <h3>featured posts</h3>
                     </div>
@@ -187,23 +260,20 @@ export default{
         }
     }
 }
-
+//jumbotron------------------------------------------------------------------
 .jumbo{
     background-color: $bg-lgray1;
     padding: 1.5rem 0;
     .row{
         flex-wrap: wrap ;
         .col{ 
-            min-height: 200px;
-            min-width: 380px;
-            
             
             .card{
                 position: relative;
                 overflow: hidden;
                 z-index: 3;
-                object-fit: contain;
                 cursor: pointer;
+
                 &:hover{
                     .overlay{
                         top:0;
@@ -215,7 +285,6 @@ export default{
                 }
                 img{
                     transition: 500ms;
-                    display: block;
                 }
                 .filter{
                     position: absolute;
@@ -231,11 +300,42 @@ export default{
                     height: 100%;
                     width: 100%;
                     position: absolute;
-                    top: 45%;
                     left: 0;
                     padding: 1rem;
                     z-index: 2;
                     transition: 500ms;
+                    @media screen and (min-width: 300px){
+                      top:30%
+                    }
+                    @media screen and (min-width: 400px){
+                      top:45%
+                    }
+                    @media screen and (min-width:500px){
+                        top:55%
+                    }
+                    @media screen and (min-width:599px){
+                        top: 65%
+                    }
+                    @media  screen and (min-width: 650px){
+                        top: 35%
+                    }
+                    @media screen and (min-width: 820px){
+                        top:45%
+                    }
+                    @media screen and (min-width: 950px){
+                        top:55%
+                    }
+                    @media screen and (min-width:1100px){
+                        top: 45%;
+                    }
+
+
+                    // @media screen and (min-width: 1100px){
+                    //     top:60%
+                    // }
+                    
+                    
+
                     .text{
                         height: 120px;
                         flex-direction: column;
@@ -255,18 +355,49 @@ export default{
         }
     }
 }
-
+//related section----------------------------------------------------------------
 .related {
     
-    .img{
-        width: 50px;
-        height: 50px;
-        margin-right: 15px;
+    .post{
+        padding-bottom: .7rem;
+        border-bottom: 1px dotted $bd-gray2;
+        margin-bottom: .7rem;
+        max-height: 58px;
+        min-width: 330px;
+        
+        .img{
+            width: 45px;
+            height: 45px;
+            margin-right: 15px;
+            img{
+                object-fit: cover;
+               
+            }
+        }
+        .post-txt{
+            width: calc(100% - 70px);
+            .title{
+                font-size: 13px;
+                font-weight: 600;
+                transition: 100ms;
+            }
+            .date{
+                font-size: 12px;
+                color: $text-gray2;
+                margin-top: 5px;
+                transition: 100ms;
+            }
+        }
     }
-    .date{
-        font-size: 12px;
-        color: $text-gray2;
-        margin-top: 5px;
+
+    a:hover{
+        .title{
+            color: $primary;
+        }
+        .post-txt > .date{
+            color: #000000;
+            font-weight: 500;
+        }
     }
 }
 </style>

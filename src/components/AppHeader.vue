@@ -226,26 +226,32 @@ export default {
                     <!-- featured posts -->
                     <div class="col">
                         <h3>featured posts</h3>
+                        
                         <div class="featured-post">
-                            <div class="filter">
-                                <div class="text">
-                                    <span class="tag">{{ featured.tag }}</span>
-                                    <h2>{{ featured.title }}</h2>
+                            <a href="#">
+                                <div class="filter">
+                                    <div class="text">
+                                        <span class="tag">{{ featured.tag }}</span>
+                                        <h2>{{ featured.title }}</h2>
+                                    </div>
                                 </div>
-                            </div>
-                            <img :src="getImgUrl(featured.img)" alt="">
+                                <img :src="getImgUrl(featured.img)" alt="">
+                            </a>
                         </div>
+                        
                         <!-- author -->
                         <h3>featured author</h3>
-                        <div class="featured-author fl">
-                            <div class="author-img">
-                                <img :src="getImgUrl(author.img)" alt="">
+                        <a href="">
+                            <div class="featured-author fl">
+                                    <div class="author-img">
+                                        <img :src="getImgUrl(author.img)" alt="">
+                                    </div>
+                                    <div class="author-des">
+                                        <h3>{{ author.name }}</h3>
+                                        <p>{{ author.description }}</p>
+                                    </div>
                             </div>
-                            <div class="author-des">
-                                <h3>{{ author.name }}</h3>
-                                <p>{{ author.description }}</p>
-                            </div>
-                        </div>
+                        </a>
                         <!-- /author -->
                     </div>
                     <!-- /featured posts -->
@@ -440,7 +446,9 @@ export default {
         }
     }
 
+
     .featured-post {
+        overflow: hidden;
         min-height: 160px;
         margin-top: 35px;
         position: relative;
@@ -451,8 +459,14 @@ export default {
         @media screen and (min-width:1100px){
             width: 100%;
         }
+        a:hover{
+            img{
+                transform: scale(1.2);
+            }
+        }
         img{
            min-height: 160px;
+           transition: 500ms;
         }
         .filter .text{
             position: absolute;

@@ -184,7 +184,7 @@ export default {
                     <!-- /main content -->
 
                     <!-- aside content -->
-                    <div class="hp-col sm">
+                    <div class="hp-col sm fl column">
 
                         <div class="from-twitter">
                             <h3>latest from twitter</h3>
@@ -256,124 +256,154 @@ export default {
 }
 
 .home-page {
-
-    .lg {
-        width: 70%;
-
-        .hp-post {
-            margin-bottom: 2rem;
-
-            .calendar {
-                width: 50px;
-                padding-top: 1rem;
-                margin-right: .5rem;
-                text-align: center;
-                &>span{
-                    display: inline-block;
-                    font-size: 13px;
-                    font-weight: 900;
-                    width: 80%;
-                    &.day{
-                        background-color: $bg-lgray1 ;
-                        height: 40px;
-                        line-height: 40px;
-                    }
-                    &.month{
-                        background-color: $bg-dgray1;
-                        color: #ffffff;
-                        font-size: 10px;
-                        height: 20px;
-                        line-height: 20px;
-                    }
-                }
+    .row{
+        @media screen and (max-width:800px){
+            flex-direction: column;
+            align-items: center;
+            
+        }
+        .lg {
+            width: 70%;
+            @media screen and (max-width:800px){
+            width: 100%;
             }
-
-            .post-text {
-                width: calc(100% - 50px);
-                padding-top: 1rem;
-                font-size: 12px;
-
-                .other-details {
-                    margin-top: 1rem;
-                    padding-bottom: 1rem;
-                    border-bottom: 1px solid $bd-gray2 ;
+    
+            .hp-post {
+                margin-bottom: 2rem;
+    
+                .calendar {
+                    width: 50px;
+                    padding-top: 1rem;
+                    margin-right: .5rem;
+                    text-align: center;
                     &>span{
-                        color: $text-gray1;
-                        width: 100px;
-                        text-align: center;
                         display: inline-block;
-                        border: 1px solid;
-                        border-radius: 5px;
-                        height: 20px;
-                        line-height: 18px;
-                        text-transform: uppercase;
-                        &:hover{
-                            background-color: $bg-lgray2;
-                            color: black;
+                        font-size: 13px;
+                        font-weight: 900;
+                        width: 80%;
+                        &.day{
+                            background-color: $bg-lgray1 ;
+                            height: 40px;
+                            line-height: 40px;
+                        }
+                        &.month{
+                            background-color: $bg-dgray1;
+                            color: #ffffff;
+                            font-size: 10px;
+                            height: 20px;
+                            line-height: 20px;
                         }
                     }
-
-                    .stats {
-                        width: 100%;
-
-                        &>span {
-
-                            a {
-                                margin-right: 1rem;
-                                color: $text-blue ;
-
-                                &:hover {
-                                    text-decoration: underline;
+                }
+    
+                .post-text {
+                    width: calc(100% - 50px);
+                    padding-top: 1rem;
+                    font-size: 12px;
+    
+                    .other-details {
+                        margin-top: 1rem;
+                        padding-bottom: 1rem;
+                        border-bottom: 1px solid $bd-gray2 ;
+                        &>span{
+                            color: $text-gray1;
+                            width: 100px;
+                            text-align: center;
+                            display: inline-block;
+                            border: 1px solid;
+                            border-radius: 5px;
+                            height: 20px;
+                            line-height: 18px;
+                            text-transform: uppercase;
+                            &:hover{
+                                background-color: $bg-lgray2;
+                                color: black;
+                            }
+                        }
+    
+                        .stats {
+                            width: 100%;
+    
+                            &>span {
+    
+                                a {
+                                    margin-right: 1rem;
+                                    color: $text-blue ;
+    
+                                    &:hover {
+                                        text-decoration: underline;
+                                    }
+                                }
+    
+                                i {
+                                    margin-right: 5px;
                                 }
                             }
-
-                            i {
-                                margin-right: 5px;
+    
+                        }
+                    }
+                }
+            }
+        }
+    
+        .sm {
+            width: 30%;
+            padding-left: 1rem;
+            @media screen and (max-width:800px){
+                width: 100%; 
+                flex-direction: row;
+            }
+            .from-twitter{
+                @media screen and (max-width:800px){
+                     width: 50%;
+                     padding-right: 2rem;
+                }
+                .message{
+                    margin-bottom: 1rem;
+                    i{
+                        display: block;
+                        width: 20px;
+                        margin-right: 10px;
+                        padding-top: 3px;
+                        
+                    }
+                    p{
+                        font-size: 12px;
+                    }
+                    .message-details{
+                        display: block;
+                        span{
+                            font-size: 12px;
+                            color: $text-blue ;
+                        }
+                    }
+    
+                }
+            }
+    
+            .from-instagram{
+                margin-top: 3rem;
+                @media screen and (max-width:800px){
+                     width: 50%;
+                     margin-top: 0;
+                }
+                .img-container{
+                    
+                    .img{
+                        width:calc(100% / 3);
+                        height: 50%;
+                        overflow: hidden;
+                        cursor: pointer;
+                        img{
+                            transition: 200ms;
+                            &:hover{
+                                transform: scale(1.2);
                             }
                         }
-
                     }
                 }
             }
         }
     }
-
-    .sm {
-        width: 30%;
-        padding-left: 1rem;
-        .from-twitter{
-            .message{
-                margin-bottom: 1rem;
-                i{
-                    display: block;
-                    width: 20px;
-                    margin-right: 10px;
-                    padding-top: 3px;
-                    
-                }
-                p{
-                    font-size: 12px;
-                }
-                .message-details{
-                    display: block;
-                    span{
-                        font-size: 12px;
-                        color: $text-blue ;
-                    }
-                }
-
-            }
-        }
-
-        .from-instagram{
-            margin-top: 3rem;
-            .img-container{
-                
-                .img{
-                    width:calc(100% / 3);
-                    height: 50%;
-                }
-            }
-        }
-    }
-}</style>
+}
+</style>

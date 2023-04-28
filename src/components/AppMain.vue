@@ -31,10 +31,11 @@ export default {
                     author: "John Doe",
                     tags: "Lifestyle, Travel",
                     comments: "12 Comments",
-                    date: {
-                        day: "12",
-                        month: "Jan",
+                    date:{
+                        day:"12",
+                        month:"JAN"
                     }
+                    
                 },
                 {
                     img: "blog-55 (1).jpg",
@@ -75,12 +76,42 @@ export default {
                     author: "John Doe",
                     tags: "Travel, Lifestyle",
                     comments: "12 Comments",
-                    date: {
+                    date:{
                         day: "12",
                         month: "Jan",
                     }
                 },
+            ],
+            fromTwitter:[
+                {
+                    message:"if you have any suggestions for the next updates, let us know.",
+                    date:"01:05 PM Sep 18th",
+                },
+                {
+                    message:"We have just updated Porto Admin. Check the changelog for more information.",
+                    date:"01:04 PM Sep 18th",
+                },
+            ],
+            fromInstagramImg:[
 
+                {
+                    img:"29739607_2020680068220520_4509928046932787200_n.jpg",
+                },
+                {
+                    img:"30087804_253872848488989_8792603541668626432_n.jpg",
+                },
+                {
+                    img:"29415620_196477127626244_3250318472361541632_n.jpg",
+                },
+                {
+                    img:"30078414_1274410412703843_8290935809419247616_n.jpg",
+                },
+                {
+                    img:"30077195_2066750973610181_3733150062893596672_n.jpg",
+                },
+                {
+                    img:"29415304_166583630713703_1032667922171953152_n.jpg",
+                },    
             ]
 
         }
@@ -106,19 +137,26 @@ export default {
         <section class="home-page">
             <div class="wrapper">
                 <div class="row fl">
+                    <!-- main content -->
                     <div class="hp-col lg">
                         <div v-for="post in posts" class="hp-post">
                             <div class="post-img">
                                 <img :src="getImgUrl(post.img)" alt="">
                             </div>
                             <div class="post-details fl">
-                                <div class="calendar">
 
+                                <div class="calendar fl column">
+                                    <!-- messi in maniera statica in quanto in maniera dinamica{{post.date.day/month}}non funzionava -->
+                                    <span class="day">12</span>
+                                    <span class="month">JAN</span>
+                                    
                                 </div>
+
                                 <div class="post-text fl column">
                                     <h3 class="post-title">{{ post.title }}</h3>
                                     <p class="post-desciption">{{ post.description }}</p>
                                     <div class="other-details fl j-between">
+
                                         <div class="stats">
                                             <span>
                                                 <i class="fa-regular fa-user"></i>By
@@ -137,12 +175,38 @@ export default {
                                         </div>
                                         <span class="btn ">Read More</span>
                                     </div>
+
                                 </div>
 
                             </div>
                         </div>
                     </div>
-                    <div class="hp-col sm"></div>
+                    <!-- /main content -->
+
+                    <!-- aside content -->
+                    <div class="hp-col sm">
+
+                        <div class="from-twitter">
+                            <h3>latest from twitter</h3>
+                            <div v-for="message in fromTwitter" class="message fl">
+                                <i class="fa-brands fa-twitter"></i>
+                                <div class="message-details">
+                                    <p>{{message.message}}</p>
+                                    <span>{{message.date}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="from-instagram">
+                            <h3>photos from instagram</h3>
+                            <div class="img-container fl wrap">
+                                <div  v-for="item in fromInstagramImg" class="img">
+                                    <img :src="getImgUrl(item.img)" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /aside content -->
                 </div>
             </div>
         </section>
@@ -192,7 +256,7 @@ export default {
 }
 
 .home-page {
-    
+
     .lg {
         width: 70%;
 
@@ -202,6 +266,26 @@ export default {
             .calendar {
                 width: 50px;
                 padding-top: 1rem;
+                margin-right: .5rem;
+                text-align: center;
+                &>span{
+                    display: inline-block;
+                    font-size: 13px;
+                    font-weight: 900;
+                    width: 80%;
+                    &.day{
+                        background-color: $bg-lgray1 ;
+                        height: 40px;
+                        line-height: 40px;
+                    }
+                    &.month{
+                        background-color: $bg-dgray1;
+                        color: #ffffff;
+                        font-size: 10px;
+                        height: 20px;
+                        line-height: 20px;
+                    }
+                }
             }
 
             .post-text {
@@ -238,7 +322,7 @@ export default {
                                 margin-right: 1rem;
                                 color: $text-blue ;
 
-                                &hover {
+                                &:hover {
                                     text-decoration: underline;
                                 }
                             }
@@ -256,5 +340,40 @@ export default {
 
     .sm {
         width: 30%;
+        padding-left: 1rem;
+        .from-twitter{
+            .message{
+                margin-bottom: 1rem;
+                i{
+                    display: block;
+                    width: 20px;
+                    margin-right: 10px;
+                    padding-top: 3px;
+                    
+                }
+                p{
+                    font-size: 12px;
+                }
+                .message-details{
+                    display: block;
+                    span{
+                        font-size: 12px;
+                        color: $text-blue ;
+                    }
+                }
+
+            }
+        }
+
+        .from-instagram{
+            margin-top: 3rem;
+            .img-container{
+                
+                .img{
+                    width:calc(100% / 3);
+                    height: 50%;
+                }
+            }
+        }
     }
 }</style>

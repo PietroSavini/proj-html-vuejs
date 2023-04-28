@@ -480,7 +480,13 @@ export default {
 
     .featured-author {
         max-height: 110px;
-
+        @media  screen and (min-width:650px) {
+            width: 150%;
+        }
+        @media screen and (min-width:1100px){
+            width: 100%;
+        }
+        
         .author-img {
             width: 110px;
             max-height: 110px;

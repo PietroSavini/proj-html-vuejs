@@ -1,4 +1,5 @@
 @use "./variables" as *;
+@import "node_modules/@fortawesome/fontawesome-free/css/all.css";
 //reset
 *{
     box-sizing: border-box;
@@ -35,6 +36,10 @@ body{
 
 .wrap{
     flex-wrap: wrap;
+}
+
+.column{
+    flex-direction: column;
 }
 
 .wrapper{
@@ -77,6 +82,12 @@ a{
     margin-bottom: 10px;
     font-size: 10px;
     text-transform: uppercase;
+}
+
+.btn{
+    cursor: pointer;
+    transition: 50ms;
+    
 }
 
 //typography
